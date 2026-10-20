@@ -1,5 +1,5 @@
-const CACHE = "writing-editor-mobile-1792481437864";
-const shell = ["./mobile.html", "./app.js?v=d6f3dd0beb226227", "./app.css?v=a4f78c058b46635a", "./icon.svg", "./manifest.webmanifest", "./favicon.ico", "./favicon-16.png", "./favicon-32.png", "./apple-touch-icon.png", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png"];
+const CACHE = "writing-editor-mobile-1792482804320";
+const shell = ["./mobile.html", "./app.js?v=2e9efc8fdc5217bd", "./app.css?v=5213b9399efdaa34", "./icon.svg", "./manifest.webmanifest", "./favicon.ico", "./favicon-16.png", "./favicon-32.png", "./apple-touch-icon.png", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png"];
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(shell.map(url => new Request(url, { cache: "reload" }))))));
 self.addEventListener("activate", event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith("writing-editor-mobile-") && key !== CACHE).map(key => caches.delete(key))))));
 self.addEventListener("fetch", event => {
