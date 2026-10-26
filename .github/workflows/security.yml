@@ -1,0 +1,23 @@
+name: Public app security
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '17 1 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # verified official v4
+        with:
+          persist-credentials: false
+      - name: Check public files, asset integrity and dependency advisories
+        run: node .github/security/check.mjs --online
