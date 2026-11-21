@@ -1,5 +1,5 @@
-const CACHE = "writing-editor-mobile-1795234471449";
-const shell = ["./mobile.html", "./app.js?v=e2a8ae175f557fef", "./app.css?v=2fcf9abb84c350eb", "./icon.svg", "./manifest.webmanifest", "./favicon.ico", "./favicon-16.png", "./favicon-32.png", "./apple-touch-icon.png", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png"];
+const CACHE = "writing-editor-mobile-1795246756383";
+const shell = ["./mobile.html", "./app.js?v=dbb368d476e9af61", "./app.css?v=411c5f26382d60c7", "./icon.svg", "./manifest.webmanifest", "./favicon.ico", "./favicon-16.png", "./favicon-32.png", "./apple-touch-icon.png", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png"];
 shell.push('./spell-worker.js','./spell-engine.js','./hunspell.wasm','./spell-ko.aff.gz','./spell-ko.dic.gz','./spell-en.aff.gz','./spell-en.dic.gz','./spell-notices.txt');
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(shell.map(url => new Request(url, { cache: "reload" }))))));
 self.addEventListener("activate", event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith("writing-editor-mobile-") && key !== CACHE).map(key => caches.delete(key))))));
